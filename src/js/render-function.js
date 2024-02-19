@@ -8,6 +8,7 @@ export const refs = {
   button: document.querySelector('.button'),
   gallery: document.querySelector('.gallery'),
   loader: document.querySelector('.loader'),
+  buttonLoader: document.querySelector('.btn-more'),
 };
 
 export function photosTemplate(photos) {
@@ -17,10 +18,10 @@ export function photosTemplate(photos) {
       <li class="gal-item"><a href="${data.largeImageURL}">
             <img class="gal-image" src="${data.webformatURL}" alt="${data.tags}"></a>
             <div class="par-sect">
-            <p> <span class="par-informatiom">Likes</span> <br/> ${data.likes}</p>
-            <p><span class="par-informatiom">Views</span> <br/> ${data.views}</p>
-            <p><span class="par-informatiom">Comments</span> <br/> ${data.comments}</p>
-            <p><span class="par-informatiom">Downloads</span> <br/> ${data.downloads}</p>
+            <p> <span class="par-information">Likes</span> <br/> ${data.likes}</p>
+            <p><span class="par-information">Views</span> <br/> ${data.views}</p>
+            <p><span class="par-information">Comments</span> <br/> ${data.comments}</p>
+            <p><span class="par-information">Downloads</span> <br/> ${data.downloads}</p>
             </div>
             </li>
       `;
@@ -30,7 +31,7 @@ export function photosTemplate(photos) {
 
 export function renderPhotos(photos) {
   const galleryMarkup = photosTemplate(photos);
-  refs.gallery.innerHTML = galleryMarkup;
+  refs.gallery.insertAdjacentHTML('beforeend', galleryMarkup);
 
   if (typeof lightBox !== 'undefined') {
     lightBox.refresh();
